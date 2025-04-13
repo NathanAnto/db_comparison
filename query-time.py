@@ -1,0 +1,37 @@
+import sys
+import subprocess
+
+def run_query(db_name):
+    if db_name == "Postgres":
+        command = [
+            "docker", "exec", "-i", "postgres_bench",
+            "psql", "-U", "user", "-d", "testdb", "-c", "SELECT COUNT(*) FROM users;"
+        ]
+    elif db_name == "MongoDB":
+        command = [
+            "docker", "exec", "-i", "mongo_bench",
+            "mongosh", "testdb", "--eval", "db.users.estimatedDocumentCount();"
+        ]
+    elif db_name == "Redis":
+        command = [
+            "docker", "exec", "-i", "redis_bench",
+            "redis-cli", "dbsize"
+        ]
+    else:
+        print(f"Unknown database: {db_name}", file=sys.stderr)
+        sys.exit(1)
+
+    # Run the command and capture output
+    result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    if result.returncode != 0:
+        print(f"Error: {result.stderr}", file=sys.stderr)
+        sys.exit(1)
+    print(result.stdout.strip())
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python3 query-time.py <database_name>", file=sys.stderr)
+        sys.exit(1)
+
+    db_name = sys.argv[1]
+    run_query(db_name)
