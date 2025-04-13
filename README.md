@@ -1,6 +1,13 @@
 # Database comparison
 This project aims to compare the performance, features, and use cases of different database systems. It includes benchmarks, feature analysis, and recommendations based on specific scenarios.
 
+## Databases
+Here are quick links to the official documentation for each database used:
+
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)](https://redis.io/)
+
 ## Features
 - Performance benchmarks for various database operations.
 - Analysis of supported features across databases.
@@ -58,7 +65,7 @@ To set up the environment for this project, follow these steps:
     The results will be in `results.csv`.
 
 ## Graphs
-In the `results.ipynb` file, you can see 
+In the `results.ipynb` file, you can see the different graphs based on the `results.csv`
 
 ## License
 This project is licensed under the MIT License. See the `LICENSE` file for details.
