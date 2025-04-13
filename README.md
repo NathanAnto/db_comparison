@@ -27,22 +27,38 @@ To set up the environment for this project, follow these steps:
 2. **Create a Virtual Environment**  
     Create and activate a virtual environment to isolate the project dependencies:
     ```bash
-    python3 -m venv venv
-    source venv/bin/activate  # On Windows: venv\Scripts\activate
+    python3 -m venv .venv
+    source .venv/bin/activate  # On Windows: venv\Scripts\activate
     ```
 
-4. **Docker**  
-    For this to work, three docker containers must be running. Run the docker-compose.yaml config
+3. **Install Required Python Packages**  
+    Install the necessary Python packages listed in the `requirements.txt` file:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4. **Generate Mock Data**  
+    Run the `data.py` script to generate the `data.csv` file. The databases will use this data
+    for the tests.
+    ```bash
+    python data.py
+    ```
+
+5. **Docker**  
+    For this to work, three docker containers must be running. Run the docker-compose.yaml config:
     ```bash
     docker-compose up -d
     ```
 
-5. **Run Initial Tests**  
+6. **Run Initial Tests**  
     Verify the setup by running the initial tests:
     ```bash
     python main.py
     ```
     The results will be in `results.csv`.
+
+## Graphs
+In the `results.ipynb` file, you can see 
 
 ## License
 This project is licensed under the MIT License. See the `LICENSE` file for details.
